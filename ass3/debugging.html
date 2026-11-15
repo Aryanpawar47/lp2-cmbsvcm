@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Debugging</title>
+</head>
+<body>
+
+<h2>Age Eligibility Checker</h2>
+
+<label>Enter Your Age:</label>
+<input type="number" id="age">
+
+<button id="btn">Check Eligibility</button>
+
+<h3 id="result"></h3>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    document.getElementById("btn")
+    .addEventListener("click", function() {
+
+        let age = Number(
+            document.getElementById("age").value
+        );
+
+        if (age === 0 || !Number.isInteger(age) ||
+            age < 0 || age > 120) {
+
+            document.getElementById("result").textContent =
+            "Please enter a valid age";
+        }
+
+        else if (age >= 18) {
+            document.getElementById("result").textContent =
+            "Eligible";
+        }
+
+        else {
+            document.getElementById("result").textContent =
+            "Not Eligible";
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>
