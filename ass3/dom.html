@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Manipulation</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+        .dark {
+            background: black;
+            color: white;
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h2 id="heading">Welcome to JavaScript DOM</h2>
+
+<button onclick="changeContent()">Change Content</button>
+<button onclick="changeTheme()">Change Theme</button>
+<button onclick="toggleSection()">Show / Hide</button>
+<button onclick="formatText()">Format Text</button>
+
+<div id="section">
+    <p>This is a hidden section.</p>
+</div>
+
+<p id="text">JavaScript is easy to learn.</p>
+
+<h3 id="timer">10</h3>
+
+<script>
+function changeContent() {
+    document.getElementById("heading").textContent =
+    "Content Updated Successfully!";
+}
+
+function changeTheme() {
+    document.body.classList.toggle("dark");
+}
+
+function toggleSection() {
+    let section = document.getElementById("section");
+
+    section.style.display =
+    section.style.display === "none" ? "block" : "none";
+}
+
+function formatText() {
+    let text = document.getElementById("text");
+
+    text.style.color = "blue";
+    text.style.fontWeight = "bold";
+    text.style.fontSize = "24px";
+}
+
+let count = 10;
+
+let countdown = setInterval(function() {
+    document.getElementById("timer").textContent = count;
+    count--;
+
+    if (count < 0) {
+        clearInterval(countdown);
+        document.getElementById("timer").textContent = "Time's Up!";
+    }
+}, 1000);
+</script>
+
+</body>
+</html>
