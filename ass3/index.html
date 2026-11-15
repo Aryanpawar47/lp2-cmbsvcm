@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #eee;
+            padding: 20px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+        }
+        input {
+            width: 95%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+        .error {
+            color: red;
+        }
+        button {
+            background: blue;
+            color: white;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<form id="regForm">
+    <h2>Registration Form</h2>
+
+    Name:
+    <input type="text" id="name">
+    <span class="error" id="nameError"></span><br>
+
+    Email:
+    <input type="text" id="email">
+    <span class="error" id="emailError"></span><br>
+
+    Password:
+    <input type="password" id="password">
+    <span class="error" id="passwordError"></span><br>
+
+    Mobile:
+    <input type="text" id="mobile">
+    <span class="error" id="mobileError"></span><br>
+
+    Age:
+    <input type="number" id="age">
+    <span class="error" id="ageError"></span><br>
+
+    <button type="submit">Register</button>
+    <p id="success"></p>
+</form>
+
+<script>
+document.getElementById("regForm")
+.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value;
+    let mobile = document.getElementById("mobile").value.trim();
+    let age = Number(document.getElementById("age").value);
+
+    let valid = true;
+
+    document.querySelectorAll(".error").forEach(
+        el => el.textContent = ""
+    );
+
+    document.getElementById("success").textContent = "";
+
+    if (name.length < 3) {
+        document.getElementById("nameError").textContent =
+        "Enter at least 3 characters";
+        valid = false;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById("emailError").textContent =
+        "Enter valid email";
+        valid = false;
+    }
+
+    if (password.length < 8) {
+        document.getElementById("passwordError").textContent =
+        "Password must be 8 characters";
+        valid = false;
+    }
+
+    if (!/^[0-9]{10}$/.test(mobile)) {
+        document.getElementById("mobileError").textContent =
+        "Enter 10 digit mobile number";
+        valid = false;
+    }
+
+    if (!Number.isInteger(age) || age < 18 || age > 100) {
+        document.getElementById("ageError").textContent =
+        "Age must be between 18 and 100";
+        valid = false;
+    }
+
+    if (valid) {
+        document.getElementById("success").textContent =
+        "Registration Successful!";
+        this.reset();
+    }
+});
+</script>
+
+</body>
+</html>
