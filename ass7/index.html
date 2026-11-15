@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      
+     <div id="login">
+         <input type="text" id="username" placeholder="username" >
+         <input type="password" id="password" placeholder="password">
+         <button onclick="login()">Login</button>
+         <p id="error"></p>
+     </div>
+
+     <div id="dashboard" style="display: none">
+    
+           <input type="text" id="name" placeholder="event name">
+           <input type="text" id="category" placeholder="category">
+           <input type="data" id="date" placeholder="date">
+           <button onclick="saveEvent()">save event</button>
+           <button onclick="logout()">logout</button>
+ 
+           <h2>events list</h2>
+            <div id="events"></div>
+
+     </div>
+
+     <script src="script.js"></script>
+
+</body>
+</html>
