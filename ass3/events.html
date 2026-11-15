@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Events</title>
+</head>
+<body>
+
+<h2>Interactive Form</h2>
+
+<label>Enter Your Name:</label>
+<input type="text" id="username">
+<p id="message"></p>
+
+<label>Enter Password:</label>
+<input type="password" id="pass">
+<p id="feedback"></p>
+
+<button id="btn">Click Me</button>
+
+<script>
+document.getElementById("username")
+.addEventListener("input", function() {
+
+    let name = this.value;
+
+    document.getElementById("message").textContent =
+    name.length >= 3 ?
+    "Valid Name!" : "Name must have 3 characters";
+});
+
+document.getElementById("pass")
+.addEventListener("keyup", function() {
+
+    document.getElementById("feedback").textContent =
+    this.value.length >= 8 ?
+    "Password length is valid" :
+    "Password must have 8 characters";
+});
+
+document.getElementById("btn")
+.addEventListener("click", function() {
+    alert("Button clicked successfully!");
+});
+</script>
+
+</body>
+</html>
